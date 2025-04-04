@@ -1,0 +1,114 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light background color */
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 36px;
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #555;
+            margin-top: 30px;
+        }
+
+        table {
+            margin: 20px auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            
+        }
+
+        th {
+            background-color: #4caf4c;
+            color: white;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 15px;
+            font-size: 16px;
+            text-decoration: none;
+            background-color: #45a049;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            border: 2px solid #3e8e41;
+            transition: all 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #3e8e41;
+            color: #f9f9f9;
+            border-color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+            margin-top: 30px;
+        }
+
+
+        #i1{
+            position: relative;
+            right: 670px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <a id="i1" href="{{ url_for('signin') }}">&#8592; </a>
+
+
+    <h1>Welcome To Admin Dashboard</h1>
+    <h2>Hello Admin  {{admin.name}}.Here You Can Acccess The Data. </h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date of Birth</th>
+            <th>Place</th>
+        </tr>
+        <tr>
+            <td>{{ admin.name }}</td>
+            <td>{{ admin.email }}</td>
+            <td>{{ admin.date_of_birth }}</td>
+            <td>{{ admin.place }}</td>
+        </tr>
+    </table>
+
+    <div class="button-container">
+        <a href="{{ url_for('view_users') }}">View Users</a>
+        <a href="{{ url_for('change_admin_step1') }}">Change Admin Details</a>
+        <a href="{{ url_for('view_orders') }}">View Order</a>
+    </div>
+</body>
+</html>

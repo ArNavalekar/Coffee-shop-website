@@ -1,0 +1,91 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <style>
+        body {
+            width: 100%;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .summary {
+            margin-top: 20px;
+        }
+        .summary p {
+            font-size: 16px;
+            color: #555555;
+        }
+        .back-button {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #ff7200;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Summary</h1>
+        <div class="summary">
+            <p><strong>Name:</strong> {{ order.name }}</p>
+            <p><strong>Email:</strong> {{ order.email }}</p>
+            <p><strong>Address:</strong> {{ order.address }}</p>
+            <p><strong>Mobile:</strong> {{ order.mobile }}</p>
+            <p><strong>Coffee Type:</strong> {{ order.coffee_type }}</p>
+            <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+            <p><strong>Price:</strong> ₹{{ order.price }}</p>
+            <p><strong>Payment Type:</strong> {{ order.payment }}</p>
+        </div>
+
+
+        <div class="back-button">
+            <a href="#" id="printOrder">Print Order</a>
+        </div>
+<br>
+        <div class="back-button">
+            <a href="{{ url_for('order') }}">Back to Order</a>
+        </div>
+
+    </div>
+
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // jQuery for handling print functionality
+        $(document).ready(function() {
+            $('#printOrder').on('click', function(event) {
+                event.preventDefault();  // Prevent default link behavior
+                window.print();  // Open print dialog
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9e9e9;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 90%;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+    </style>
+
+</head>
+<body>
+    
+
+    <p>
+        {% if selected_month_name and selected_year %}
+           <h1> Showing data for {{ selected_month_name }} {{ selected_year }} </h1>
+        {% elif selected_month_name %}
+           <h1> Showing data for {{ selected_month_name }} </h1>
+        {% endif %}
+    </p>
+
+
+
+<form method="POST" action="{{ url_for('view_orders') }}">
+    <h3>Analysis by Month and Year</h3>
+    <label for="month_year">Select Month and Year: {{ selected_month_name }} {{ selected_year }}</label>
+    <select name="month_year">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+        <!-- Add other months -->
+    </select>
+    <input type="number" name="year" value="2025" min="2000" placeholder="Year">
+    <button type="submit" name="analysis_type" value="month_year">Show Analysis</button>
+</form>
+
+<form method="POST" action="{{ url_for('view_orders') }}">
+    <h3>Analysis by Whole Year </h3>
+    <input type="number" name="year" value="2025" min="2020" max="2040" placeholder="Year">
+    <button type="submit" name="analysis_type" value="year">Show Analysis</button>
+</form>
+
+
+<form method="POST" action="{{ url_for('view_orders') }}">
+    <h3>Analysis by Date Range</h3>
+    <label for="day_from">From Date:</label>
+    <input type="number" value="{{ selected_day_from or 1 }}" name="day_from" min="1" max="31">
+    <select name="month_from">
+        <option value="1" >January</option>
+        <option value="2" >February</option>
+        <option value="3" >March</option>
+        <option value="4" >April</option>
+        <option value="5" >May</option>
+        <option value="6" >June</option>
+        <option value="7" >July</option>
+        <option value="8" >August</option>
+        <option value="9" >September</option>
+        <option value="10" >October</option>
+        <option value="11" >November</option>
+        <option value="12" >December</option>
+    </select>
+    
+    <input type="number" name="year_from" min="2000" value="{{ selected_year_from or 2025 }}">
+    
+    <label for="day_to">To Date:</label>
+    <input type="number" value="{{ selected_day_to or 1 }}" name="day_to" min="1" max="31">
+    <select name="month_to">
+        <option value="1" >January</option>
+        <option value="2" >February</option>
+        <option value="3" >March</option>
+        <option value="4" >April</option>
+        <option value="5" >May</option>
+        <option value="6" >June</option>
+        <option value="7" >July</option>
+        <option value="8" >August</option>
+        <option value="9" >September</option>
+        <option value="10" >October</option>
+        <option value="11" >November</option>
+        <option value="12" >December</option>
+    </select>
+    <input type="number" name="year_to" min="2000" value="{{ selected_year_to or 2025 }}">
+    <button type="submit" name="analysis_type" value="from_to">Show Analysis</button>
+</form>
+
+<!-- Display Table -->
+{% if analysis_type != 'year' %}
+<h3>Orders Table</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Sr No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Mobile</th>
+            <th>Coffee Type</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Payment</th>
+            <th>Order Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if orders %}
+            {% for order in orders %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.email }}</td>
+                    <td>{{ order.address }}</td>
+                    <td>{{ order.mobile }}</td>
+                    <td>{{ order.coffee_type }}</td>
+                    <td>{{ order.price }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.payment }}</td>
+                    <td>{{ order.date_ordered.strftime('%Y-%m-%d') }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="9">No orders available for the selected criteria.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endif %}
+
+    <!-- Display the pie chart for coffee sales -->
+    <h3>Pie Chart for Coffee Sales by Type:</h3>
+
+{% if pie_chart_url %}
+    <img src="data:image/png;base64,{{ pie_chart_url }}" alt="Pie Chart">
+
+     
+    {% else %}
+    <p>No orders available for the selected month {{ selected_month_name}} and year {{selected_year}}.</p>
+{% endif %}
+
+
+<a href="{{ url_for('admin_dashboard', admin_id=1) }}">Back to Home</a>
+
+
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <style>
+        body {
+            width: 100%;
+            background-image: url("{{ url_for('static', filename='assets/images/order_page.jpg') }}");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #f05826bd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+        }
+        h1 {
+            text-align: center;   
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            box-sizing: border-box;
+        }
+        input[type="submit"], input[type="button"] {
+            background-color: #ff7200;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: black;
+        }
+        .order-summary {
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+
+        /* Style for the reverse arrow button in the top-left corner */
+        #reverseArrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ff7200;
+            border: none;
+            font-size: 30px;
+            color: black;
+            cursor: pointer;
+        }
+
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+
+<!-- Reverse Arrow Button to go back to the previous page -->
+ <a href="{{ url_for('index')}}">
+    <button id="reverseArrow" title="Go Back">
+    &#8592; <!-- Left Arrow -->
+</button>
+ </a>
+
+<div class="container">
+    <h1>Order Your Coffee</h1>
+    <form id="orderForm" method="POST" action="/order" >
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter Your Name" value="{{username}}" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter Your Email" value="{{email}}" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" placeholder="Enter Your Address" required>
+
+        <label for="mobile">Mobile No.:</label>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="Enter Your Mobile No." required>
+
+        <label for="coffee">Coffee Type:</label>
+        <select id="coffee" name="coffee" required>
+            <option value="NONE">NONE</option>
+            <option value="ICED COFFEE">ICED COFFEE</option>
+            <option value="FRONZE COFFEE">FRONZE COFFEE</option>
+            <option value="VANILA COFFEE">VANILA COFFEE</option>
+            <option value="CHOCOLATE COFFEE">CHOCOLATE COFFEE</option>
+            <option value="NITRO COFFEE">NITRO COFFEE</option>
+            <option value="BLACK COFFEE">BLACK COFFEE</option>
+            <option value="FLAT WHITE COFFEE">FLAT WHITE COFFEE</option>
+            <option value="MOCHA COFFEE">MOCHA COFFEE</option>
+            <option value="SMOOTHIS COFFEE">SMOOTHIS COFFEE</option>
+            <option value="FRAPPUCCINO COFFEE">FRAPPUCCINO COFFEE</option>
+            <option value="CAPPUCCINO">CAPPUCCINO</option>
+            <option value="EXPRESSO">EXPRESSO</option>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" readonly>
+
+        <label for="payment">Payment Type:</label>
+        <select id="payment" name="payment" required>
+            <option value="credit">Credit Card</option>
+            <option value="debit">Debit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="cash">Cash on Delivery</option>
+        </select> 
+
+        <input type="submit" value="Place Order"> 
+        <input type="button" name="cancel" id="cancelOrder" value="Cancel Order" style="display: none;"> <!-- Cancel Order Button initially hidden -->
+        <!-- Add View Bill Button -->
+        <input type="button" name="viewBill" id="viewBill" value="View Bill" style="display: none;">
+    </form>
+
+</div>
+
+
+<script>
+$(document).ready(function() {
+    $('#coffee_type').on('change', function() {
+        calculatePrice();
+    });
+
+    $('#quantity').on('input', function() {
+        calculatePrice();
+    });
+
+    function calculatePrice() {
+        const coffeeType = $('#coffee').val();
+        const quantity = $('#quantity').val();
+        let price = 0;
+
+        switch(coffeeType) {
+            case 'ICED COFFEE':
+                price = 100;
+                break;
+            case 'FRONZE COFFEE':
+                price = 90;
+                break;
+            case 'VANILA COFFEE':
+                price = 100;
+                break;
+            case 'CHOCOLATE COFFEE':
+                price = 150;
+                break;
+            case 'NITRO COFFEE':
+                price = 110;
+                break;
+            case 'BLACK COFFEE':
+                price = 100;
+                break;
+            case 'FLAT WHITE COFFEE':
+                price = 110;
+                break;
+            case 'MOCHA COFFEE':
+                price = 130;
+                break;
+            case 'SMOOTHIS COFFEE':
+                price = 100;
+                break;
+            case 'FRAPPUCCINO COFFEE':
+                price = 150;
+                break;
+            case 'CAPPUCCINO':
+                price = 150;
+                break;
+            case 'EXPRESSO':
+                price = 200;
+                break;
+            default:
+                price = 0;
+                break;
+        }
+
+        price *= quantity;
+
+        $('#price').val(price.toFixed(2));
+    }
+
+    $('#orderForm').on('submit', function(event) {
+        event.preventDefault(); // Prevent form from actually submitting
+
+        const name = $('#name').val();
+        const email = $('#email').val();
+        const address = $('#address').val();
+        const mobile = $('#mobile').val();
+        const coffee = $('#coffee').val();
+        const quantity = $('#quantity').val();
+        const price = $('#price').val();
+        const payment = $('#payment').val();
+
+        // Fill in the summary details
+        $('#summaryName').text(name);
+        $('#summaryEmail').text(email);
+        $('#summaryAddress').text(address);
+        $('#summaryMobile').text(mobile);
+        $('#summaryCoffee').text(coffee);
+        $('#summaryQuantity').text(quantity);
+        $('#summaryPrice').text(price);
+
+        $('#orderSummary').show();
+        $('#cancelOrder').show();
+        $('#viewBill').show();
+        $('#paymentNotice').show();
+
+        // Use AJAX to submit the form data without refreshing the page
+        $.ajax({
+            type: 'POST',
+            url: '/order',
+            data: {
+                name: name,
+                email: email,
+                address: address,
+                mobile: mobile,
+                coffee: coffee,
+                quantity: quantity,
+                price: price,
+                payment: payment,
+                cancel_order: false
+            },
+            success: function() {
+                alert("Thanks for ordering!");
+            },
+            error: function() {
+                alert("Error placing order.");
+            }
+        });
+    });
+
+    
+    
+
+    $('#cancelOrder').on('click', function() {
+        if (confirm("Are you sure you want to cancel the order?")) {
+            // Fill the cancel order data
+            const email = $('#email').val(); // Get the email input value
+            
+            // Reset the form
+            $('#orderForm')[0].reset();
+            $('#price').val(''); // Clear the price field
+            $('#orderSummary').hide(); // Hide the order summary
+            $('#cancelOrder').hide(); // Hide the cancel button
+            $('#viewBill').hide(); //Hide the bill button
+            $('#paymentNotice').hide(); // Hide payment notice
+            alert("Your order has been cancelled."); // Show cancellation message
+    
+            // Use AJAX to submit the cancel order action
+            $.ajax({
+                type: 'POST',
+                url: '/order',
+                data: {
+                    cancelOrder: true, // Send this flag to indicate the order is canceled
+                    email: email // Send the user's email to identify the order
+                },
+                success: function(response) {
+                    // You may handle any post-cancellation logic here
+                    window.location.href = "/order"; // Redirect to order page
+                },
+                error: function(error) {
+                    alert("Error cancelling the order.");
+                }
+            });
+        }
+    });
+
+   
+    $('#viewBill').on('click', function(event) {
+        event.preventDefault(); // Default behavior ko roko (page refresh na ho)
+        window.open('/view_bill', '_blank'); // View Bill page nayi tab mein open karo
+    });
+});
+</script>
+</body>
+</html>

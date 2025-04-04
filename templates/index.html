@@ -1,0 +1,1328 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Website</title>
+    <!-- for icons  cdn file -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- bootstrap  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/bootstrap.min.css') }}">
+    <!-- for swiper slider  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/swiper-bundle.min.css') }}">
+    <!-- diffrent web browser  cdn file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- fancy box  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/jquery.fancybox.min.css') }}">
+    <!-- custom css  -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/style.css') }}">
+</head>
+
+<body class="body-fixed light">
+    <!-- start of header  -->
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header-logo">
+                        <a href="index.html">
+                            <img src="{{ url_for('static', filename='assets/images/logo.png') }}" width="320" height="72" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="main-navigation">
+                        <button class="menu-toggle"><span></span><span></span></button>
+                        <nav class="header-menu">
+                            <ul class="menu food-nav-menu">
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#menu">Menu</a></li>
+                                <li><a href="#gallery">Gallery</a></li>
+                                <li><a href="#blog">Blog</a></li>
+                                <li><a href="#product">Product</a></li>
+                                <li><a href="#contact">contact</a></li>
+                                <li><a href="#" onclick="confirmLogout()">Logout</a></li>
+                              
+                            </ul>
+                        </nav>
+                        <div class="header-right"> 
+                            <a href="{{ url_for('admin_login') }}" target="_blank" class="header-btn header-cart">
+                                <i class="uil uil-user-circle"></i>
+                            </a>
+                            <!--dark mode active space -->
+                            <a href="{{ url_for('order')}}" class="header-btn header-cart">
+                                <i class="uil fas fa-coffee"></i>
+                                
+                            </a> 
+                            <a href="javascript:void(0)" class="header-btn" id="tl">
+                                <i id="icon" class="uil-uil sun"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header ends  -->
+
+    <div id="viewport"> <!--main control-->
+        <div id="js-scroll-content">
+            <section class="main-banner" id="home">
+                <div class="js-parallax-scene">
+                    <div class="banner-shape-1 w-100" data-depth="0.30">
+                        <img src="{{ url_for('static', filename='assets/images/berry.png') }}" alt="berry image">
+                    </div>
+                    <div class="banner-shape-2 w-100" data-depth="0.25">
+                        <img src="{{ url_for('static', filename='assets/images/leaf.png') }}" alt=" leaf image">
+                    </div>
+                </div>
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="banner-text">
+                                    <h1 class="h1-title ft">
+                                        Welcome to our
+                                        <span>India Coffee</span>
+                                        shop.
+                                    </h1>
+                                    
+                                    <p id="st">Welcome to our coffee shop, where every cup is crafted with passion and care. Enjoy our
+                                        selection of freshly brewed coffees and delightful pastries in a cozy, inviting atmosphere. 
+                                        Whether you're here for a quick pick-me-up or a relaxing break, we're dedicated to making your 
+                                        visit exceptional. Thank you for choosing us to be a part of your day!</p>    
+                                    <div class="banner-btn mt-4">
+                                        <a href="#menu" class="sec-btn">Check our Menu</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="banner-img-wp">
+                                    <div class="banner-img" style="background-image: url('{{ url_for('static', filename='assets/images/mainb.avif') }}')";>
+                                    </div>
+                                </div>
+                                <div class="banner-img-text mt-4 m-auto">
+                                    <h5 class="h5-title">Peaceful Coffee</h5>
+                                    <p>Coffee is more than a beverage; it's a moment of tranquility and connection 
+                                       in every sip. Experience the calming embrace of our freshly brewed coffee, designed
+                                       to bring peace and comfort to your day.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="brands-sec">
+                <div class="container">
+                    <div class="row block glow">
+                        <div class="col-lg-12">
+                            <div class="brand-title mb-5">
+                                <h5 class="h5-title ft">Trusted by 70+ companies</h5>
+                            </div>
+                            <div class="brands-row">
+                                <div class="brands-box">
+                                    <img src="{{ url_for('static', filename='assets/images/brands/b1.png') }}" alt="brand1">
+                                </div>
+                                <div class="brands-box">
+                                    <img src="{{ url_for('static', filename='assets/images/brands/b2.png') }}" alt="brand2">
+                                </div>
+                                <div class="brands-box">
+                                    <img src="{{ url_for('static', filename='assets/images/brands/b3.png') }}" alt="brand3">
+                                </div>
+                                <div class="brands-box">
+                                    <img src="{{ url_for('static', filename='assets/images/brands/b4.png') }}" alt="brand4">
+                                </div>
+                                <div class="brands-box">
+                                    <img src="{{ url_for('static', filename='assets/images/brands/b5.png') }}" alt="brand5">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About us-->
+            <section class="about-sec section" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sec-title text-center mb-5">
+                                <p class="sec-sub-title mb-3">About Us</p>
+                                <h2 class="h2-title ft">Discover our <span>coffee shop story</span></h2>
+                                <div class="sec-title-shape mb-4">
+                    <!--show or not show  <img src="{{ url_for('static', filename='assets/images/title-shape.svg') }}" alt=""> -->
+                                    <img src="assets/images/title-shape.svg" alt="">
+                                </div>
+                                <p>Discover the enchanting story behind our coffee shop, where every sip is a journey through
+                                    tradition and artistry. Founded in [1980], our passion for coffee began with a dream to craft not 
+                                    just beverages, but moments of joy and connection. We meticulously select the finest beans and master
+                                    the art of brewing to ensure each cup is a masterpiece of flavor and warmth. Our cozy, inviting space 
+                                    has become a beloved retreat where stories are shared and memories are made. Immerse yourself in the aroma
+                                    of freshly brewed coffee and let our welcoming atmosphere turn your visit into a cherished experience. Join 
+                                    us and savor the essence of our dedication, where every visit is a celebration of exceptional coffee
+                                    and heartfelt hospitality.</p>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row block glow">
+                        <div class="col-lg-8 m-auto">
+                            <div class="about-video">
+                                <div class="about-video-img" style="background-image: url('{{ url_for('static', filename='assets/images/about1.webp') }}')";>
+                                </div>
+                                <div class="play-btn-wp block glow">
+                                    <a href="{{ url_for('static', filename='assets/images/video.mp4') }}" data-fancybox="video" class="play-btn">    
+                                        <i class="uil uil-play"></i>
+
+                                    </a>
+                                    <span>Watch The Recipe</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--Menu page-->
+            <section style="background-image: url(assets/images/menu-bg.png);"
+                class="our-menu section bg-light repeat-img" id="menu">
+                <div class="sec-wp">
+                    <div class="container "><!--not dark applicable-->
+                        <div class="row ">
+                            <div class="col-lg-12">
+                                <div class="sec-title text-center mb-5">
+                                    <p class="sec-sub-title mb-3">our menu</p>
+                                    <h2 class="h2-title">wake up early, <span>drink fresh & healthy</span></h2>
+                                    <div class="sec-title-shape mb-4">
+                                        <img src="assets/images/title-shape.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-tab-wp">
+                            <div class="row ">
+                                <div class="col-lg-12 m-auto">
+                                    <div class="menu-tab text-center">
+                                        <ul class="filters">
+                                            <div class="filter-active"></div>
+                                            <li class="filter" data-filter=".all, .breakfast, .lunch, .dinner">
+                                                All
+                                            </li>
+                                            <li class="filter" data-filter=".breakfast">
+                                                Favorites
+                                            </li>
+                                            <li class="filter" data-filter=".lunch">
+                                                Special
+                                            </li>
+                                            <li class="filter" data-filter=".dinner">                                           
+                                                Lovable
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-list-row">
+                            <div class="row g-xxl-5 bydefault_show " id="menu-dish">
+                                <div class="col-lg-4 col-sm-6 dish-box-wp breakfast " data-cat="breakfast">
+                                    <div class="dish-box text-center">
+                                        <div class="dist-img">
+                                            <img src="{{ url_for('static', filename='assets/images/dish/1.jpg') }}" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            5
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Espresso</h3>
+                                            <p>120 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p class="fu">Type</p>
+                                                    <b class="fu">Italian</b>
+                                                </li>
+                                                <li>
+                                                    <p class="fu">Persons</p>
+                                                    <b class="fu">2</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <b class="fu">Rs. 499</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2 -->
+                                <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
+                                    <div class="dish-box text-center">
+                                        <div class="dist-img">
+                                            <img src="{{ url_for('static', filename='assets/images/dish/2.png') }}" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            4.3
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Americano</h3>
+                                            <p>80 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p class="fu">Type</p>
+                                                    <b class="fu">English</b>
+                                                </li>
+                                                <li>
+                                                    <p class="fu">Person</p>
+                                                    <b class="fu">1</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <b class="fu">Rs. 359</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 3 -->
+                                <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
+                                    <div class="dish-box text-center">
+                                        <div class="dist-img">
+                                            <img src="{{ url_for('static', filename='assets/images/dish/3.png') }}" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            4
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Latte</h3>
+                                            <p>100 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p class="fu">Type</p>
+                                                    <b class="fu">English</b>
+                                                </li>
+                                                <li>
+                                                    <p class="fu">Persons</p>
+                                                    <b class="fu">2</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <b class="fu">Rs. 149</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 4 -->
+                                <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
+                                    <div class="dish-box text-center">
+                                        <div class="dist-img">
+                                            <img src="{{ url_for('static', filename='assets/images/dish/4.jpg') }}" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            4.5
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Cappuccino</h3>
+                                            <p>120 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p class="fu">Type</p>
+                                                    <b class="fu">Europian</b>
+                                                </li>
+                                                <li>
+                                                    <p class="fu">Persons</p>
+                                                    <b class="fu">2</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <b class="fu">Rs. 379</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 5 -->
+                                <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
+                                    <div class="dish-box text-center">
+                                        <div class="dist-img">
+                                            <img src="{{ url_for('static', filename='assets/images/dish/5.jpg') }}" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            5
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Mocha</h3>
+                                            <p>120 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p class="fu">Type</p>
+                                                    <b class="fu">Yemen</b>
+                                                </li>
+                                                <li>
+                                                    <p class="fu">Persons</p>
+                                                    <b class="fu">2</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <b class="fu">Rs. 99</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 6 -->
+                                <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
+                                    <div class="dish-box text-center">
+                                        <div class="dist-img">
+                                            <img src="{{ url_for('static', filename='assets/images/dish/6.jpg') }}" alt="">
+                                        </div>
+                                        <div class="dish-rating">
+                                            5
+                                            <i class="uil uil-star"></i>
+                                        </div>
+                                        <div class="dish-title">
+                                            <h3 class="h3-title">Flat White</h3>
+                                            <p>120 calories</p>
+                                        </div>
+                                        <div class="dish-info">
+                                            <ul>
+                                                <li>
+                                                    <p class="fu">Type</p>
+                                                    <b class="fu">Australian</b>
+                                                </li>
+                                                <li>
+                                                    <p class="fu">Persons</p>
+                                                    <b class="fu">2</b>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="dist-bottom-row">
+                                            <ul>
+                                                <li>
+                                                    <b class="fu">Rs. 159</b>
+                                                </li>
+                                                <li>
+                                                    <button class="dish-add-btn">
+                                                        <i class="uil uil-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="two-col-sec section">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="sec-img mt-5 block glow">
+                                <img src="{{ url_for('static', filename='assets/images/arabica.png') }}" alt="arabica coffee">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="sec-text">
+                                <h2 class="xxl-title ft">Arabica Coffee</h2>
+                                <p>Across the globe, certain types of coffee have gained immense popularity due
+                                   to their flavor profiles, cultural significance, and widespread consumption. 
+                                   Arabica coffee (Coffea arabica) is the most consumed coffee variety, accounting for 
+                                   around 60-70% of global production. Known for its smooth, delicate flavor and low acidity, 
+                                   it’s primarily grown in high-altitude regions of Latin America, Ethiopia, and Southeast Asia. 
+                                   Arabica coffee is favored for its nuanced taste and is commonly found in specialty coffee shops worldwide.</p>
+                                <p>Arabica beans are commonly used for specialty coffees and are valued for their diversity in taste profiles,
+                                   depending on the region, altitude, and processing methods.</p>    
+                                <p>Arabica coffee plants thrive in higher altitudes, typically between 600 and 2,200 meters 
+                                   above sea level. The ideal growing conditions for Arabica include tropical climates with 
+                                   consistent rainfall and moderate temperatures (between 15-24°C or 60-75°F). </p>  
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="two-col-sec section pt-0">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 order-lg-1 order-2">
+                            <div class="sec-text">
+                                <h2 class="xxl-title ft">Cappuccino</h2>
+                                <p>Cappuccino is one of the most popular and iconic coffee drinks worldwide,
+                                    with origins in Italy. It is traditionally made by combining equal parts of espresso, 
+                                    steamed milk, and milk foam. This balance creates a rich, creamy texture with a strong 
+                                    coffee flavor. The name "cappuccino" is derived from the Capuchin monks, whose brown
+                                    robes are said to resemble the drink’s color when the milk is added to the espresso.</p>  
+                                <p>While it has a morning association in Europe, cappuccino is now consumed throughout the day
+                                    in many countries, especially in coffee shops in North America and beyond.</p>      
+                                <p>Cappuccino is typically served in a smaller cup, usually between 150-180 ml, which emphasizes
+                                    the bold flavor of the espresso. The foam on top, which is about a third of the drink, acts as
+                                    an insulator, keeping the coffee warm while also giving it a smooth mouthfeel.</p>    
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-2 order-1">
+                            <div class="sec-img block glow">
+                                <img src="{{ url_for('static', filename='assets/images/cappucino.png') }}" alt="cappucino">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--book table section-->
+            <section class="book-table section bg-light">
+                <div class="book-table-shape">
+                    <img src="{{ url_for('static', filename='assets/images/table-leaves-shape.png') }}" alt="">
+                </div>
+
+                <div class="book-table-shape book-table-shape2">
+                    <img src="{{ url_for('static', filename='assets/images/table-leaves-shape.png') }}" alt="">
+                </div>
+
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sec-title text-center mb-5">
+                                    <p class="sec-sub-title mb-3">Book Table</p>
+                                    <h2 class="h2-title">Opening Table</h2>
+                                    <div class="sec-title-shape mb-4">
+                                        <img src="assets/images/title-shape.svg" alt="">
+                  <!--show or not show  <img src="{{ url_for('static', filename='assets/images/title-shape.svg') }}" alt=""> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="book-table-info">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="table-title text-center">
+                                        <h3>Monday to Thursday</h3>
+                                        <p>9:00 am - 22:00 pm</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="call-now text-center">
+                                        <a href="tel:9307584014"> <i class="uil uil-phone"> </a></i>
+                                        <a href="tel:9307584014">+91 - 8866998866</a> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="table-title text-center">
+                                        <h3>Friday to Sunday</h3>
+                                        <p>11::00 am to 20:00 pm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                        <!--Gallery Page-->
+                        <div class="row" id="gallery">
+                            <div class="col-lg-10 m-auto">
+                                <div class="book-table-img-slider" id="icon">
+                                    <div class="swiper-wrapper">
+                                        
+                                        <a href="{{ url_for('static', filename='assets/images/bt1.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt1.jpg') }}')";></a>
+
+                                        <a href="{{ url_for('static', filename='assets/images/bt2.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt2.jpg') }}')";> </a>
+
+                                        <a href="{{ url_for('static', filename='assets/images/bt3.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt3.jpg') }}')";></a>
+    
+                                        <a href="{{ url_for('static', filename='assets/images/bt4.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt4.jpg') }}')";></a>
+       
+                                           <a href="{{ url_for('static', filename='assets/images/bt1.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt1.jpg') }}')";></a>
+
+                                        <a href="{{ url_for('static', filename='assets/images/bt2.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt2.jpg') }}')";> </a>
+
+                                        <a href="{{ url_for('static', filename='assets/images/bt3.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt3.jpg') }}')";></a>
+    
+                                        <a href="{{ url_for('static', filename='assets/images/bt4.jpg') }}" data-fancybox="table-slider"
+                                           class="book-table-img back-img swiper-slide"
+                                           style="background-image: url('{{ url_for('static', filename='assets/images/bt4.jpg') }}')";></a>
+          
+                                        
+                                    </div>
+
+                                    <div class="swiper-button-wp">
+                                        <div class="swiper-button-prev swiper-button">
+                                            <i class="uil uil-angle-left"></i>
+                                        </div>
+                                        <div class="swiper-button-next swiper-button">
+                                            <i class="uil uil-angle-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!--Team section-->
+            <section class="our-team section"><!--if want add dark mode-->
+                <div class="sec-wp">
+                    <div class="container block glow">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sec-title text-center mb-5">
+                                    <p class="sec-sub-title mb-3">Our Team</p>
+                                    <h2 class="h2-title ft">Meet our Chefs</h2>
+                                    <div class="sec-title-shape mb-4">
+                                        <img src="assets/images/title-shape.svg" alt="">
+                <!--show or not show    <img src="{{ url_for('static', filename='assets/images/title-shape.svg') }}" alt=""> -->    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row team-slider">
+                            <div class="swiper-wrapper">
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="team-box text-center block glow">
+                                        <div style="background-image: url('{{ url_for('static', filename='assets/images/chef/c1.jpg') }}')";
+                                            class="team-img back-img">
+                                          <!--1 shef--> <!--changes done these section email-->
+                                        </div>
+                                        <h3 class="h3-title">Nilay Sharma</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <a href="mailto:akbaralinavalekar@gmail.com" target="_blank">
+                                                        <i class="uil uil-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.instagram.com/ar_navalekar" target="_blank">
+                                                        <i class="uil uil-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.github.com/arnavalekar" target="_blank">
+                                                        <i class="uil uil-github-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="team-box text-center block glow">
+                                         <div style="background-image: url('{{ url_for('static', filename='assets/images/chef/c2.jpg') }}')";
+                                            class="team-img back-img">
+                                          <!--2 shef-->
+                                        </div>
+                                        <h3 class="h3-title">Riya Varma</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <a href="mailto:akbaralinavalekar@gmail.com" target="_blank">
+                                                        <i class="uil uil-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.instagram.com/ar_navalekar" target="_blank">
+                                                        <i class="uil uil-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.github.com/arnavalekar" target="_blank">
+                                                        <i class="uil uil-github-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="team-box text-center block glow">
+                                        <div style="background-image: url('{{ url_for('static', filename='assets/images/chef/c3.jpg') }}')";    
+                                            class="team-img back-img">
+                                        <!--3 shef-->
+                                        </div>
+                                        <h3 class="h3-title">Shanaya Thakur</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <a href="mailto:akbaralinavalekar@gmail.com" target="_blank">
+                                                        <i class="uil uil-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.instagram.com/ar_navalekar" target="_blank">
+                                                        <i class="uil uil-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.github.com/arnavalekar" target="_blank">
+                                                        <i class="uil uil-github-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="team-box text-center block glow">
+                                        <div style="background-image: url('{{ url_for('static', filename='assets/images/chef/c4.jpg') }}')";    
+                                            class="team-img back-img">
+                                         <!-- 4 shef-->
+                                        </div>
+                                        <h3 class="h3-title">Richa Fernandez</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <a href="mailto:akbaralinavalekar@gmail.com" target="_blank">
+                                                        <i class="uil uil-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.instagram.com/ar_navalekar" target="_blank">
+                                                        <i class="uil uil-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.github.com/arnavalekar" target="_blank">
+                                                        <i class="uil uil-github-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="team-box text-center block glow">
+                                        <div style="background-image: url('{{ url_for('static', filename='assets/images/chef/c5.jpg') }}')";    
+                                            class="team-img back-img">
+                                        <!-- 5 shef-->
+                                        </div>
+                                        <h3 class="h3-title">Priya Dev</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <a href="mailto:akbaralinavalekar@gmail.com" target="_blank">
+                                                        <i class="uil uil-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.instagram.com/ar_navalekar" target="_blank">
+                                                        <i class="uil uil-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.github.com/arnavalekar" target="_blank">
+                                                        <i class="uil uil-github-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-wp">
+                                <div class="swiper-button-prev swiper-button">
+                                    <i class="uil uil-angle-left"></i>
+                                </div>
+                                <div class="swiper-button-next swiper-button">
+                                    <i class="uil uil-angle-right"></i>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--what they say section-->
+            <section class="testimonials section bg-light"><!--dark mode bg write here-->
+                <div class="sec-wp">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sec-title text-center mb-5">
+                                    <p class="sec-sub-title mb-3">What they say</p>
+                                    <h2 class="h2-title">What our customers <span>say about us</span></h2>
+                                    <div class="sec-title-shape mb-4">
+                                        <img src="assets/images/title-shape.svg" alt="">
+                  <!--show or not show  <img src="{{ url_for('static', filename='assets/images/title-shape.svg') }}" alt=""> -->                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="testimonials-img">
+                                    <img src="{{ url_for('static', filename='assets/images/testimonial-img.png') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="testimonials-box block glow">
+                                            <div class="testimonial-box-top">
+                                                <div class="testimonials-box-img back-img" 
+                                                    style="background-image: url('{{ url_for('static', filename='assets/images/testimonials/t1.jpg') }}')";>
+                                                </div>
+                                                <div class="star-rating-wp">
+                                                    <div class="star-rating">
+                                                        <span class="star-rating__fill" style="width:85%"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="testimonials-box-text ">
+                                                <h3 class="h3-title">
+                                                    Abhi Mehta
+                                                </h3>
+                                                <p class="fu">The perfect balance of rich espresso and smooth milk this coffee is
+                                                    a delight with every sip!</p>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="testimonials-box block glow">
+                                            <div class="testimonial-box-top">
+                                                <div class="testimonials-box-img back-img" 
+                                                    style="background-image: url('{{ url_for('static', filename='assets/images/testimonials/t2.jpg') }}')";>
+                                                </div>
+                                                <div class="star-rating-wp">
+                                                    <div class="star-rating">
+                                                        <span class="star-rating__fill" style="width:80%"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="testimonials-box-text">
+                                                <h3 class="h3-title">
+                                                    Nora Dsouza
+                                                </h3>
+                                                <p class="fu">Absolutely amazing! The flavor is bold, yet so smooth, making it 
+                                                    the best cup I’ve had in ages.</p>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="testimonials-box block glow">
+                                            <div class="testimonial-box-top">
+                                                <div class="testimonials-box-img back-img" 
+                                                    style="background-image: url('{{ url_for('static', filename='assets/images/testimonials/t3.jpg') }}')";>
+                                                </div>
+                                                <div class="star-rating-wp">
+                                                    <div class="star-rating">
+                                                        <span class="star-rating__fill" style="width:89%"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="testimonials-box-text">
+                                                <h3 class="h3-title">
+                                                    Vijay Sinha
+                                                </h3>
+                                                <p class="fu">A truly refreshing and flavorful experience this coffee exceeded 
+                                                    all my expectations.</p>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="testimonials-box block glow">
+                                            <div class="testimonial-box-top">
+                                                <div class="testimonials-box-img back-img" 
+                                                    style="background-image: url('{{ url_for('static', filename='assets/images/testimonials/t4.jpg') }}')";>
+                                                </div>
+                                                <div class="star-rating-wp">
+                                                    <div class="star-rating">
+                                                        <span class="star-rating__fill" style="width:100%"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="testimonials-box-text">
+                                                <h3 class="h3-title">
+                                                    Somya Shikhawat
+                                                </h3>
+                                                <p class="fu">From the first sip to the last, the taste is pure perfection. Definitely
+                                                    coming back for more!</p>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--faqs section-->
+            <section class="faq-sec section-repeat-img" style="background-image: url('{{ url_for('static', filename='assets/images/faq-bg.png') }}')";>    
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sec-title text-center mb-5">
+                                    <p class="sec-sub-title mb-3">faqs</p>
+                                    <h2 class="h2-title ft">Frequently <span>asked questions</span></h2>
+                                    <div class="sec-title-shape mb-4">
+                                        <img src="assets/images/title-shape.svg" alt="">
+                  <!--show or not show  <img src="{{ url_for('static', filename='assets/images/title-shape.svg') }}" alt=""> -->                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-row block glow">
+                            <div class="faq-box ">
+                                <h4 class="h4-title">What are the login hours?</h4>
+                                <p class="fu">Our coffee shop's online login system is available 24/7, allowing you to access your account anytime. 
+                                    Our staff is available during regular business hours from 9 AM to 10 PM.</p>    
+                            </div>
+                            <div class="faq-box ">
+                                <h4 class="h4-title">What do I get my refund?</h4>
+                                <p class="fu">If you're not satisfied with your in-store purchase, you can request a refund at the shop. 
+                                    Simply bring your receipt,our staff will assist you in processing the refund on the spot. 
+                                    Refunds will be issued to your original payment method odepending on the situation.</p>    
+                            </div>
+                            <div class="faq-box ">
+                                <h4 class="h4-title">How long it will take coffee to arrive?</h4>
+                                <p class="fu">At our coffee shop, most food items are prepared and ready for pickup within 10-15 minutes.
+                                    Please check with our staff when you place your order.</p>    
+                            </div>
+                            <div class="faq-box ">
+                                <h4 class="h4-title">Does your cafe has all types of coffee available?</h4>
+                                <p class="fu">Our cafe offers a diverse selection of coffee types, including popular options like espresso,
+                                   cappuccino, and latte. However, availability may vary, so please check with us for specific offerings
+                                   on the day of your visit</p>    
+                            </div>
+                            <div class="faq-box ">
+                                <h4 class="h4-title">What is cost of coffee delivery?</h4>
+                                <p class="fu">Currently, we do not offer coffee delivery. All orders must be picked up in-store.
+                                    If you have any special requests or need further assistance, please contact us directly.</p>    
+                            </div>
+                            <div class="faq-box ">
+                                <h4 class="h4-title">Who is eligible for pro membership?</h4>
+                                <p class="fu">Pro membership is available to frequent customers who meet our criteria, typically including a
+                                    minimum number of visits. For detailed eligibility requirements and benefits, please inquire
+                                    at our counter or visit our website.</p>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--Blog page-->
+            <div class="bg-pattern bg-light repeat-img"
+                style="background-image: url('{{ url_for('static', filename='assets/images/blog-pattern-bg.png') }}')";>
+                <section class="blog-sec section block glow" id="blog">
+                    <div class="sec-wp">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="sec-title text-center mb-5">
+                                        <p class="sec-sub-title mb-3">Our blog</p>
+                                        <h2 class="h2-title ft">Latest Publications</span></h2>
+                                        <div class="sec-title-shape mb-4">
+                                            <img src="assets/images/title-shape.svg" alt="">
+                      <!--show or not show  <img src="{{ url_for('static', filename='assets/images/title-shape.svg') }}" alt=""> -->             
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 ">
+                                    <div class="blog-box">
+                                        <div class="blog-img back-img"
+                                            style="background-image: url('{{ url_for('static', filename='assets/images/blog/blog1.jpg') }}')";></div>
+                                        <div class="blog-text">
+                                            <p class="blog-date fu">September.15.2024</p>
+                                            <a href="https://en.wikipedia.org/wiki/Cold_brew_coffee" target="_blank"  class="h4-title">Energetic Coffee which you can make at home.</a>
+                                            <p class="fu">Made by steeping coffee grounds in cold water for an extended period, it
+                                                has a higher caffeine content and a smoother taste, offering sustained energy.
+                                                Firstly, it boasts a smoother, less acidic flavor compared to hot-brewed coffee, 
+                                                thanks to the cold extraction process that minimizes the release of bitter compounds.
+                                                Additionally, cold brew typically has higher caffeine content per serving due to the higher 
+                                                coffee-to-water ratio used in brewing, providing a robust energy boost.  </p>    
+                                            <a href="https://en.wikipedia.org/wiki/Cold_brew_coffee" target="_blank" id="ch1" class="sec-btn">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="blog-box">
+                                        <div class="blog-img back-img"
+                                            style="background-image: url('{{ url_for('static', filename='assets/images/blog/blog2.jpg') }}')";></div>
+                                        <div class="blog-text">
+                                            <p class="blog-date fu">October.15.2024</p>
+                                            <a href="https://en.wikipedia.org/wiki/Caff%C3%A8_americano" target="_blank" class="h4-title">Fresh  and relax combo for profesional.</a>
+                                            <p class="fu">The Iced Americano is popular globally for its clean taste and the flexibility to
+                                               customize with various milk or syrups. It’s a favorite among those who prefer a straightforward 
+                                               coffee experience with a refreshing chill. Made by diluting espresso with cold water and ice, it 
+                                               provides a bold coffee flavor with a smooth, crisp finish. Additionally, it allows for full customization, 
+                                               as you can easily adjust the strength by varying the amount of espresso and water.Its an delicious coffee
+                                               everyone like.</p>    
+                                            <a href="https://en.wikipedia.org/wiki/Caff%C3%A8_americano" target="_blank" id="ch2" class="sec-btn">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="blog-box">
+                                        <div class="blog-img back-img"
+                                            style="background-image: url('{{ url_for('static', filename='assets/images/blog/blog3.jpg') }}')";></div>
+                                        <div class="blog-text">
+                                            <p class="blog-date fu">November.15.2024</p>
+                                            <a href="https://en.wikipedia.org/wiki/Shot_glass" target="_blank" class="h4-title">Coffee with double combo</a>
+                                            <p class="fu">In our coffee shop a shot of liqueur is a 1.5-ounce (44 milliliters) addition
+                                                of flavored alcohol to coffee drinks. Common choices include Baileys Irish Cream, Kahlúa
+                                                and Amaretto. This addition enhances the flavor profile of coffee beverages, creating 
+                                                specialty drinks like Caffè Corretto or Irish Coffee. The inclusion of liqueur, such as Baileys 
+                                                Irish Cream or Kahlúa, introduces rich, complementary flavors like creaminess or chocolate, which
+                                                can elevate the coffee’s taste profile and add a layer of indulgence. </p>    
+                                            <a href="https://en.wikipedia.org/wiki/Shot_glass" target="_blank" id="ch3" class="sec-btn">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+
+            <!--product page starts  -->
+<section class="blog-sec section " id="product">
+    <div class="col-lg-12">
+        <div class="sec-title text-center mb-5">
+            <p class="sec-sub-title mb-3">Product</p>
+            <h2 class="h2-title ft">Try our <span>New Products</span></h2>
+            <div class="sec-title-shape mb-4">
+                <img src="assets/images/title-shape.svg" alt="">
+<!--show or not show  <img src="{{ url_for('static', filename='assets/images/title-shape.svg') }}" alt=""> -->                         
+            </div>
+        </div>
+    </div>
+   
+    <div class="card-container block glow">
+        
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/iced coffee.jpg') }}" class="card-img">
+            <p class="card-title">ICED COFFEE</p> 
+            <p class ="prise"> <del>  ₹120/- </del> &nbsp;  ₹100 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blank">Order</a></button>        
+            </div>
+    
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/fronze coffee.jpg') }}" class="card-img">
+            <p class="card-title"> FRONZE COFFEE</p>
+            <p class ="prise"><del> ₹120/- </del> &nbsp; ₹90 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+  
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/vanila coffee.jpg') }}" class="card-img">
+            <p class="card-title">VANILA COFFEE</p>
+            <p class ="prise"><del> ₹120/- </del>&nbsp; ₹100 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+            </div>
+    
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/chocolate coffee.jpg') }}" class="card-img">
+            <p class="card-title">CHOCOLATE COFFEE</p>
+            <p class ="prise"><del> ₹160/- </del>&nbsp; ₹150 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+    
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/nitro coffee.jpg') }}" class="card-img">
+            <p class="card-title">NITRO COFFEE</p>
+            <p class ="prise"><del> ₹120/- </del>&nbsp; ₹110 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/black coffee.jpg') }}" class="card-img">
+            <p class="card-title">BLACK COFFEE</p>
+            <p class ="prise"><del> ₹120/- </del>&nbsp; ₹100 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/flat white coffee.jpg') }}" class="card-img">
+            <p class="card-title">FLAT WHITE COFFEE</p>
+            <p class ="prise"> <del> ₹140/- </del>&nbsp;₹110 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+
+         <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/mocha coffee.jpg') }}" class="card-img">
+            <p class="card-title">MOCHA COFFEE</p>
+            <p class ="prise"> <del> ₹150/- </del>&nbsp;₹130 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/smoothis coffee.jpg') }}" class="card-img">
+            <p class="card-title">SMOOTHIS COFFEE</p>
+            <p class ="prise"><del> ₹120/- </del> &nbsp;₹100 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/frappuccino coffee.jpg') }}" class="card-img">
+            <p class="card-title">FRAPPUCCINO </p>
+            <p class ="prise"><del> ₹170/- </del>&nbsp; ₹150 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+
+        <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/cappuccino.jpg') }}" class="card-img">
+            <p class="card-title"> CAPPUCCINO</p>
+            <p class ="prise"><del> ₹190/- </del> &nbsp;₹150 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+        </div>
+
+         <div class="copy-card block glow">
+            <img src="{{ url_for('static', filename='assets/images/product/expresso.jpg') }}" class="card-img">
+            <p class="card-title"> EXPRESSO</p>
+            <p class ="prise"><del> ₹225/- </del> &nbsp;₹200 /-</p>
+            <p class="b"><button class="btn"><a href="{{ url_for('order') }}" target="_blanK">Order</a></button>
+            </div>
+
+        </div>
+</section>
+
+ <!--product page ends-->
+
+    
+
+            <!--Contact page-->
+            <!-- footer starts  -->
+            <footer class="site-footer" id="contact">
+                <div class="top-footer section block glow">
+                    <div class="sec-wp">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="footer-info">
+                                        <div class="footer-logo">
+                                            <a href="index.html">
+                                             <img src="{{ url_for('static', filename='assets/images/logo.png') }}" width="320" height="72" alt="Logo">
+                                            </a>
+                                        </div>
+                                        <p>Every cup is a story, every visit a memory—thank you for being a part of ours.</p>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <a href="mailto:akbaralinavalekar@gmail.com" target="_blank">
+                                                        <i class="uil uil-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.instagram.com/ar_navalekar" target="_blank">
+                                                        <i class="uil uil-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.github.com/arnavalekar" target="_blank">
+                                                        <i class="uil uil-github-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="footer-flex-box">
+                                        <div class="footer-table-info">
+                                            <h3 class="h3-title ft">open hours</h3>
+                                            <ul>
+                                                <li><i class="uil uil-clock"></i> Mon-Thurs : 9am - 22pm</li>
+                                                <li><i class="uil uil-clock"></i> Fri-Sun : 11am - 22pm</li>
+                                            </ul>
+                                        </div>
+                                        <div class="footer-menu food-nav-menu">
+                                            <h3 class="h3-title ft">Links</h3>
+                                            <ul class="column-2">
+                                                <li>
+                                                    <a href="#home" class="footer-active-menu">Home</a>
+                                                </li>
+                                                <li><a  class="ft"href="#about">About</a></li>
+                                                <li><a  class="ft"href="#menu">Menu</a></li>
+                                                <li><a  class="ft"href="#gallery">Gallery</a></li>
+                                                <li><a  class="ft"href="#blog">Blog</a></li>
+                                                <li><a  class="ft"href="#product">Product</a></li>
+                                                <li><a  class="ft"href="#contact">Contact</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="footer-menu">
+                                            <h3 class="h3-title ft">Company</h3>
+                                            <ul>
+                                                <li><a class="ft" href="#">Terms & Conditions</a></li>
+                                                <li><a class="ft" href="#">Privacy Policy</a></li>
+                                                <li><a class="ft" href="#">Cookie Policy</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <div class="copyright-text">
+                                    <p>Copyright &copy; 2021 <span class="name">Golden Coffee.</span>All Rights Reserved.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="scrolltop"><i class="uil uil-angle-up"></i></button>
+                    </div>
+                </div>
+            </footer>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- jquery  -->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery-3.5.1.min.js') }}"></script>
+
+    <!--External jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- bootstrap -->
+
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/popper.min.js') }}"></script>
+
+    <!-- fontawesome  -->
+    <script src="{{ url_for('static', filename='assets/js/font-awesome.min.js') }}"></script>
+
+    <!-- swiper slider  -->
+    <script src="{{ url_for('static', filename='assets/js/swiper-bundle.min.js') }}"></script>
+
+    <!-- mixitup -- filter  -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.mixitup.min.js') }}"></script>
+
+    <!-- fancy box  -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.fancybox.min.js') }}"></script>
+
+    <!-- parallax  -->
+    <script src="{{ url_for('static', filename='assets/js/parallax.min.js') }}"></script>
+
+    <!-- gsap  -->
+    <script src="{{ url_for('static', filename='assets/js/gsap.min.js') }}"></script>
+
+    <!-- scroll trigger  -->
+    <script src="{{ url_for('static', filename='assets/js/ScrollTrigger.min.js') }}"></script>
+    <!-- scroll to plugin  -->
+    <script src="{{ url_for('static', filename='assets/js/ScrollToPlugin.min.js') }}"></script>
+    <!-- rellax  -->
+    <!-- <script src="assets/js/rellax.min.js"></script> -->
+    <!-- <script src="assets/js/rellax-custom.js"></script> -->
+    <!-- smooth scroll  -->
+    <script src="{{ url_for('static', filename='assets/js/smooth-scroll.js') }}"></script>
+    <!-- custom js  -->
+    <script src="{{ url_for('static', filename='assets/main.js') }}"></script>
+
+<script>
+    function confirmLogout() {
+        const result = confirm("Are you sure you want to logout?");
+        if (result) {
+            window.location.href = "/logout";  // Redirect to logout route
+        }
+    }
+</script>
+</body>
+
+</html>
