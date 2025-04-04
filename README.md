@@ -188,3 +188,11 @@ Go to http://127.0.0.1:8000/ to access the website.
 📝 License
 
 This project is for educational purposes. You are free to use and modify it.
+
+
+
+
+
+
+
+
