@@ -140,7 +140,7 @@ Visualization: Matplotlib
 
 Step 1: Clone the Repository
 
-git clone 
+git clone  https://github.com/yourusername/coffe-shop.git
 
 Step 2: Create Virtual Environment
 
@@ -163,7 +163,7 @@ python app.py
 
 Step 1: Clone the Repository
 
-git clone 
+git clone https://github.com/ArNavalekar/Coffee-shop-website.git
 
 Step 2: Create Virtual Environment
 
