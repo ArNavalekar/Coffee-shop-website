@@ -32,7 +32,7 @@ app = Flask(__name__)
 
 # Flask configuration
 app.secret_key = 'b513b50a29079cb504cb57d2fdad74b2'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Database URI yahan set karein
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  # Set Database URI 
 app.config['SESSION_PERMANENT'] = True
 #After sufficient time it delete
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)  # Automatically clear session on server restart
