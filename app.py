@@ -174,7 +174,7 @@ def view_users():
     # Agar selected year me koi users nahi mile to users ko empty list set karo
     users = signups if signups else []
 
-    # Month-wise count nikalna
+    # Month-wise count get
     signup_dates = [user.date_joined.strftime("%B") for user in signups]
     signup_counts = Counter(signup_dates)
 
@@ -187,7 +187,7 @@ def view_users():
     plt.bar(month_counts.keys(), month_counts.values(), color='orange', width=0.4)
     plt.xlabel('Month')
     plt.ylabel('Signups')
-    plt.title(f'Monthly Signups ({selected_year})')  # ✅ Selected Year ka Title
+    plt.title(f'Monthly Signups ({selected_year})')  # Selected Year Title
 
     img = io.BytesIO()
     plt.savefig(img, format='png')
@@ -335,9 +335,9 @@ def view_orders():
 
        #Based on cofee quantity     
         if orders:
-            coffee_sales = defaultdict(int)  # ✅ Dictionary to store total quantity per coffee type
+            coffee_sales = defaultdict(int)  # Dictionary to store total quantity per coffee type
             for order in orders:
-                coffee_sales[order.coffee_type] += order.quantity  # ✅ Summing quantity instead of count
+                coffee_sales[order.coffee_type] += order.quantity  # Summing quantity instead of count
 
             plt.figure(figsize=(8, 6))
             plt.pie(coffee_sales.values(), labels=coffee_sales.keys(), autopct='%1.1f%%')
